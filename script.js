@@ -1,201 +1,63 @@
+/* Split into 3 chunks */
+const a = "RkxBR3tD";
+const b = "SFVOS0lO";
+const c = "R18yMDI2fQ==";
 
-
-(function(){
-
-"use strict";
-
-
-(function(){
-
-    const t0 = performance.now();
-
-    debugger;
-
-    const t1 = performance.now();
-
-    if(t1 - t0 > 100)
-    {
-        document.body.innerHTML = "";
-        document.body.style.background = "black";
-        throw new Error("Debugging blocked");
-    }
-
-})();
-
-
-
-(function(){
-
-    const trap = new Image();
-
-    Object.defineProperty(trap, 'id', {
-        get: function()
-        {
-            document.body.innerHTML = "";
-            throw new Error("Console inspection blocked");
-        }
-    });
-
-    console.log(trap);
-
-})();
-
-
-const _0xH = [
-
-"3d","3d","51","66",
-"32","49","44","4d",
-"79","38","31","52",
-"4f","6c","30","53",
-"4f","56","46","53",
-"44","74","33","52",
-"42","78","6b","52"
-
-];
-
-function _0xREV(a)
+/* Sum function */
+function sum(x, y, z)
 {
-    let r = [];
-
-    for(let i = a.length - 1; i >= 0; i--)
-        r.push(a[i]);
-
-    return r;
+return x + y + z;
 }
 
-function _0xHEX(arr)
+/* Final secret variable */
+const secret = sum(a, b, c);
+
+/* Decode the flag */
+const flag = atob(secret);
+
+let attempts = 0;
+
+function triggerFlash()
 {
-    let out = "";
+const stimulus =
+document.getElementById("stimulus-window");
 
-    for(let i = 0; i < arr.length; i++)
-    {
-        out += String.fromCharCode(
-            parseInt(arr[i],16)
-        );
-    }
 
-    return out;
+stimulus.innerText = secret;
+
+setTimeout(function()
+{
+    stimulus.innerText = "XXXXXXXXXXXX";
+}, 200);
+
 }
 
-function _0xGET()
+function checkFlag()
 {
-    const step1 = _0xREV(_0xH);
+const input =
+document.getElementById("flagInput").value;
 
-    const step2 = _0xHEX(step1);
 
-    return step2;
+const result =
+    document.getElementById("hint");
+
+attempts++;
+
+if (input === secret)
+{
+    result.innerText =
+    "Correct! Flag: " + flag;
+}
+else
+{
+    result.innerText =
+    "Wrong. Try again.";
+
+    if (attempts >= 3)
+    {
+        result.innerText +=
+        " Hint: reverse";
+    }
 }
 
-const _0xMEM = (function(){
-
-    let cache = null;
-
-    return {
-
-        fetch: function(){
-
-            if(cache === null)
-                cache = _0xGET();
-
-            return cache;
-        }
-
-    };
-
-})();
-
-
-window.triggerFlash = function()
-{
-    const el =
-        document.getElementById(
-            "stimulus-window"
-        );
-
-    const secret = _0xMEM.fetch();
-
-    el.innerText = secret;
-
-    el.style.color = "#2ecc71";
-
-
-    setTimeout(function(){
-
-        el.innerText =
-            "XXXXXXXXXXXXXXX";
-
-        el.style.color = "#e74c3c";
-
-    },200);
-
-};
-
-
-window.checkFlag = function()
-{
-    const input =
-        document.getElementById(
-            "flagInput"
-        ).value;
-
-    const real =
-        _0xMEM.fetch();
-
-    if(input === real)
-    {
-        alert(
-            "Correct! STM chunking successful."
-        );
-
-        const hint =
-            document.getElementById("hint");
-
-        if(hint)
-        hint.innerText =
-            "Decoded Flag: FLAG{CHUNKING_2026}";
-    }
-    else
-    {
-        alert(
-            "Error: Information lost to decay."
-        );
-    }
-
-};
-
-
-(function(){
-
-    let threshold = 160;
-
-    setInterval(function(){
-
-        const t0 = performance.now();
-
-        debugger;
-
-        const t1 = performance.now();
-
-        if(t1 - t0 > threshold)
-        {
-            document.body.innerHTML = "";
-        }
-
-    },1000);
-
-})();
-
-(function(){
-
-    const checksum =
-        _0xMEM.fetch().length;
-
-    if(checksum !== 28)
-    {
-        document.body.innerHTML = "";
-    }
-
-})();
-
-
-})();
+}
