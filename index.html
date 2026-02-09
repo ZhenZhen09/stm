@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Challenge 2: The Iconic Buffer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="ctf-container">
+
+        <h2>🚩 Challenge 2: The Iconic Buffer</h2>
+
+        <p>
+            STM access is rapid (~70ms), but decay is just as fast (~200ms).
+            Focus your attention and capture the encoded signal.
+        </p>
+
+        <div id="stimulus-window">
+            [READY]
+        </div>
+
+        <button onclick="triggerFlash()" class="flash-btn">
+            Receive Stimulus
+        </button>
+
+        <div class="input-zone">
+
+            <input type="text" id="flagInput" placeholder="Enter encoded string...">
+
+            <button onclick="checkFlag()">
+                Submit
+            </button>
+
+        </div>
+
+        <p id="hint"></p>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

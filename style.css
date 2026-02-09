@@ -1,0 +1,74 @@
+body
+{
+    background-color: #0f172a;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+}
+
+
+#ctf-container
+{
+    margin-top: 100px;
+}
+
+
+#stimulus-window
+{
+    font-size: 32px;
+    font-weight: bold;
+
+    margin: 30px auto;
+
+    width: 500px;
+
+    padding: 20px;
+
+    border: 2px solid white;
+
+    background-color: black;
+
+    letter-spacing: 3px;
+}
+
+
+button
+{
+    padding: 10px 20px;
+
+    font-size: 16px;
+
+    margin: 10px;
+
+    cursor: pointer;
+}
+
+
+input
+{
+    padding: 10px;
+
+    width: 300px;
+
+    font-size: 16px;
+}
+
+
+.flash-btn
+{
+    background-color: #2563eb;
+    color: white;
+}
+
+
+.flash-btn:hover
+{
+    background-color: #1d4ed8;
+}
+
+
+#hint
+{
+    margin-top: 20px;
+    color: yellow;
+}
